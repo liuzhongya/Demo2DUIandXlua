@@ -1,0 +1,45 @@
+{
+  "infoList": [
+    {
+      "panelTypeString": "ItemMessage",
+      "path": "UIPanel/ItemMessagePanel"
+    },
+    {
+      "panelTypeString": "Shop",
+      "path": "UIPanel/ShopPanel"
+    },
+    {
+      "panelTypeString": "Developer",
+      "path": "UIPanel/DeveloperPanel"
+    },
+    {
+      "panelTypeString": "ExitGame",
+      "path": "UIPanel/ExitGamePanel"
+    },
+    {
+      "panelTypeString": "Setting",
+      "path": "UIPanel/SettingPanel"
+    },
+    {
+      "panelTypeString": "MainMenum",
+      "path": "UIPanel/MainMenuPanel"
+    },
+    {
+      "panelTypeString": "RankingList",
+      "path": "UIPanel/RankingListPanel"
+    },
+    {
+      "panelTypeString": "StartMenum",
+      "path": "UIPanel/StartMenuPanel"
+    },
+    {
+      "panelTypeString": "Pause",
+      "path": "UIPanel/PausePanel"
+    },
+    {
+      "panelTypeString": "ReturnMain",
+      "path": "UIPanel/ReturnMainPanel"
+    }
+
+  ]
+}
