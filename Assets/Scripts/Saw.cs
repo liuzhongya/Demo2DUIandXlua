@@ -83,7 +83,7 @@ public class Saw : MonoBehaviour {
         else if (random == 2)
         {
             if (target != null)
-                transform.Translate(Vector3.left * SawMoveSpeed * Time.deltaTime);// 使得齿轮父物体向左移动
+                transform.Translate(Vector3.left * SawMoveSpeed * Time.deltaTime);// 使得齿轮父物体向左 移动
             else
             {
                 FindTarget();

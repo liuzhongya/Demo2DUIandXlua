@@ -31,8 +31,8 @@ public class ExitGamePanel : BasePanel {
     public void OnExitGameButton()
     {
         OnClosePanel();
-        UnityEditor.EditorApplication.isPlaying = false;
-        //Application.Quit();
+       // UnityEditor.EditorApplication.isPlaying = false;
+        Application.Quit();
 
     }
 
