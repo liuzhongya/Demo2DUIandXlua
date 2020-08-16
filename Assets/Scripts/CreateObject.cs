@@ -2,29 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreateObject : MonoBehaviour
-{
+public class CreateObject : MonoBehaviour {
 
-    public string ResourcesDir = "objects";
-    private int randomCreate;
+    public string ResourcesDir= "objects";
+    private  int randomCreate;
 
     private void OnEnable()
     {
-        randomCreate = Random.Range(1, 40);
+         randomCreate = Random.Range(1, 40);
         NewObjectCon();
     }
     private void Start()
     {
-
+        
     }
 
 
-    void Update()
-    {
+    void Update () {
+		
+	}
 
-    }
-
-    void NewObject(string objName, Vector3 cretePos)
+    void NewObject(string objName,Vector3 cretePos)
     {
         string path = ResourcesDir + "/" + objName;
         GameObject go = Resources.Load<GameObject>(path);
@@ -34,10 +32,10 @@ public class CreateObject : MonoBehaviour
 
     }
 
-    public string CutStr(string strName)
+   public  string  CutStr(string strName)
     {
-        // print(strName.Substring(0, 6));
-        return strName.Substring(0, 6);
+       // print(strName.Substring(0, 6));
+       return  strName.Substring(0, 6);
 
     }
     void NewObjectCon()
@@ -226,12 +224,7 @@ public class CreateObject : MonoBehaviour
             }
 
         }
-        //  宝箱0-10， ，金币10-20，敌人（3种）20-40
-
-
-
+  
     }
-
-
 
 }

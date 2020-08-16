@@ -9,92 +9,77 @@ public class EnemyCon : MonoBehaviour {
     private  RaycastHit2D hit;
     private int wallLayerMsk=8;
     private Vector2 enemyPos;
+    private Animator enemyAni;
      
     public float triggerTime = 0;
     public float rayValue=1.3f;
     public float fallSpeed = 6f;
     public GameObject lxgo;
+     
 
     void Start () {
 
         enemyrig = GetComponent<Rigidbody2D>();
         wallLayerMsk = LayerMask.GetMask("Wall");
+        enemyAni = GetComponent<Animator>();
 
-        //StartCoroutine("Findaa");
-        //if (lxgo!=null)
-        //print(AssetDatabase.GetAssetPath(lxgo));
+        
     }
 	
-	//IEnumerator Findaa()
- //   {
- //       yield return new WaitForSeconds(0.5f);
- //       lxgo = GameObject.Find("Canvas").transform.Find("MainMenuPanel(Clone)").gameObject;
-
- //   }
-
+	 
 
 
 	void Update () {
+        UpdateAction();
 
-        RayTest();
-       // enemyrig.velocity = new Vector2(EnemySpeed, enemyrig.velocity.y);
-           EnemyMove();
+       //  RayTest();
+        //  EnemyMove();
         triggerTime += Time.deltaTime;
     }
+
+    public void UpdateAction()
+    {  
+            RayTest();
+            EnemyMove();
+        if (PlayerData.m_IsPause)  //动画播放与停止
+        {
+            enemyAni.speed = 0;
+        }
+        else
+        {
+            enemyAni.speed = 1;
+        }
+    }
+
     public void EnemyMove()
     {
         enemyPos.x = transform.position.x;
         enemyPos.y = transform.position.y;
 
-        /////射线检测有问题
-        //if (this.transform.localScale.x < 0)
-        //{
-        //    hitinfo = Physics2D.Raycast(enemyPos - new Vector2(0, 1), Vector2.up, 10f);
-        //    Debug.DrawLine(enemyPos, hitinfo.point, Color.red);//画线显示
-        //    if (hitinfo.collider != null)
-        //    {
-        //        print(hitinfo.collider.ToString());
-        //        if (hitinfo.collider.tag == Tags.Wall)
-        //        {
-        //            IsWall = true;
-        //        }
-        //        else { IsWall = false; }
-        //    }
-        //}
-        //if (this.transform.localScale.x > 0)
-        //{
-        //    hitinfo = Physics2D.Raycast(enemyPos - new Vector2(1, 0), Vector2.down, 10f);
-        //    Debug.DrawLine(enemyPos, hitinfo.point, Color.red);//画线显示
-        //    if (hitinfo.collider != null)
-        //    {
-        //        print(hitinfo.collider.tag);
-        //        print(hitinfo.collider.ToString());
-        //        if (hitinfo.collider.tag == Tags.Wall)
-        //        {
-        //            IsWall = true;
-        //        }
-        //        else { IsWall = false; }
-        //    }
-        //}
-
-        //print(IsWall);
-
-
         if (this.tag == Tags.Enamy)
         {
             if (this.transform.localScale.x < 0)
             {
-               // GetComponent<Rigidbody2D>().velocity = new Vector2(EnemySpeed, enemyrig.velocity.y);
-                 //print("移动1");
-                enemyrig.velocity = new Vector2(EnemySpeed, enemyrig.velocity.y);
-
+                if (!PlayerData.m_IsPause)
+                {
+                    enemyrig.velocity = new Vector2(EnemySpeed, enemyrig.velocity.y);
+                     
+                }           
+                else
+                {
+                    enemyrig.velocity = Vector2.zero;
+                   
+                }
             }
             else
             {
-              // GetComponent<Rigidbody2D>().velocity = new Vector2(-EnemySpeed, enemyrig.velocity.y);
-                enemyrig.velocity = new Vector2(-EnemySpeed   , enemyrig.velocity.y);
-
-              // print("移动w" + enemyrig.velocity);
+                if (!PlayerData.m_IsPause)
+                    enemyrig.velocity = new Vector2(-EnemySpeed   , enemyrig.velocity.y);
+                else
+                {
+                    enemyrig.velocity = Vector2.zero;
+                }
+                // print("移动w" + enemyrig.velocity);
             }
 
 
@@ -102,29 +87,12 @@ public class EnemyCon : MonoBehaviour {
             {
                 this.transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
             }
-
            
+        }
 
         }
 
 
-
-
-
-        }
-
-
-    //public void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    print("碰撞到wall");
-    //    if (collision.gameObject.tag == Tags.Wall && triggerTime > 0.5f)
-    //    {
-    //        // enemyrig.velocity = new Vector2(enemyrig.velocity.x, enemyrig.velocity.y);
-    //        this.transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
-    //        print("转向" + transform.localScale.x);
-    //        triggerTime = 0;
-    //    }
-    //}
     private void OnTriggerEnter2D(Collider2D collision)
     {
       //  print("碰撞到wall");

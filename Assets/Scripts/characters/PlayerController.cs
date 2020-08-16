@@ -40,26 +40,46 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
      
     }
-    // Update is called once per frame
+ 
     void Update()
     {
+        UpdateAction();
 
         if (Input.GetKeyDown(KeyCode.J)){
-
-        if(Time.time>=(lastDash+dashCoolDown))
+            if (Time.time>=(lastDash+dashCoolDown))
             {
                 ReadyToDash();
             }
 
         }
-        Dash();
-    //    if (isDashing)
-         //   return;
+        if (Input.GetKeyDown(KeyCode.O))   //
+        {
+            PlayerData.m_IsPause = false ;
 
-        MovePlayer();
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PlayerData.m_IsPause = true;
+
+        }
+
+        }
+    public void UpdateAction()
+    {  Dash();
+            MovePlayer();
+        if (!PlayerData.m_IsPause)
+        {
+            anim.speed = 1;
+          
+            playerrig.gravityScale = 1;
+        }
+        else
+        {
+            anim.speed = 0;
+            playerrig.gravityScale = 0;
+        }
 
     }
-
 
     public void MovePlayer()
     {
@@ -70,7 +90,16 @@ public class PlayerController : MonoBehaviour
            playerjumpspeed = 7;
         }
 
-
+        if (PlayerData.m_IsPause)
+        {
+            playerspeed = 0;
+            playerjumpspeed = 0;
+        }
+        else
+        {
+           playerspeed = 4;
+           playerjumpspeed = 8;
+           }
 
        // print(isGround + "   " + IsContinuousJump);
 
@@ -84,14 +113,14 @@ public class PlayerController : MonoBehaviour
 
 
 
-        if (h > 0.1)
+        if (h > 0.1&&!PlayerData.m_IsPause)
         {
             transform.localScale = new Vector3(1, 1, 1);
           //  playerrig.velocity = new Vector2(h * playerspeed, playerrig.velocity.y);
         
             anim.SetInteger("Speed", 1);
         }
-        else  if (h < -0.1)
+        else  if (h < -0.1 && !PlayerData.m_IsPause)
         {
             anim.SetInteger("Speed", 1);
             transform.localScale = new Vector3(-1, 1, 1);
@@ -103,10 +132,14 @@ public class PlayerController : MonoBehaviour
             anim.SetInteger("Speed", 0);
         }
  
+        if(!PlayerData.m_IsPause)
         playerrig.velocity = new Vector2(playerspeed * h, playerrig.velocity.y);
+        else
+        {
+            playerrig.velocity = Vector2.zero;
+        }
 
-
-            if (transform.localScale.x > 0)
+        if (transform.localScale.x > 0)
         {
             hit = Physics2D.Raycast(transform.position - new Vector3(rayDeviation, rayDown, 0), Vector2.down, 0.5f);
             Debug.DrawRay(transform.position - new Vector3(rayDeviation, rayDown, 0), Vector2.down, Color.red);//绘制射线
@@ -145,26 +178,27 @@ public class PlayerController : MonoBehaviour
 
         //   print(isGround);
         //对动画转化条件进行赋值，使人物进行跳跃
-        if (Input.GetKeyDown(KeyCode.Space) &  isGround )
+        if (Input.GetKeyDown(KeyCode.Space) &  isGround  )
         {
-           
 
-            playerrig.velocity = new Vector2(h * playerspeed, playerjumpspeed);
-
+            if (!PlayerData.m_IsPause)
+                playerrig.velocity = new Vector2(h * playerspeed, playerjumpspeed);
+            else
+            {
+                playerrig.velocity = Vector2.zero;
+            }
         }
         else if(Input.GetKeyDown(KeyCode.Space) & !isGround  &&   IsContinuousJump)
         {
-           
-           
-            playerrig.velocity = new Vector2(h * playerspeed, playerjumpspeed);
+
+            if (!PlayerData.m_IsPause)
+                playerrig.velocity = new Vector2(h * playerspeed, playerjumpspeed);
+            else
+            {
+                playerrig.velocity = Vector2.zero;
+            }
             IsContinuousJump = false;
         }
-
-       // print(isGround);
-
-        ////限制人物跳起的最高高度
-        //float realY = Mathf.Clamp(transform.position.y, minY, maxY);
-        //this.transform.position = new Vector3(transform.position.x, realY, transform.position.z);
 
     }
 

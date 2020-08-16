@@ -5,20 +5,24 @@ using UnityEngine;
 public class Coin : MonoBehaviour {
 
 
-    //public string lx = "Dirt1a(1)";
-    //   public string[] coinName = new string[6];
-    //public   int start = 1, length = 4;
-    void Start () {
-
-        //  string str = gameObject.name;
-
-        //  Debug.Log(str+"    "+str.Substring(start - 1, length));
-        //  if(str.Substring(start - 1, length) == "Coin")
-        //  {
-        ////      print("这是金币");
-        //  }
-      
+    private Animator ani;
+    private void Start()
+    {
+        ani = GetComponent<Animator>();
     }
+
+    private void Update()
+    {
+        if (PlayerData.m_IsPause)
+        {
+            ani.speed = 0;
+        }
+        else
+        {
+            ani.speed = 1;
+        }
+    }
+
 
     void CutStr(string strName)
     {
@@ -26,9 +30,7 @@ public class Coin : MonoBehaviour {
 
     }
 
-    void Update () {
-		
-	}
+  
 
     void UnSpawnItem()
     {

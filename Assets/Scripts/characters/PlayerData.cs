@@ -17,26 +17,17 @@ public class PlayerData : MonoBehaviour {
         _instance = this;
     }
 
-    //private static PlayerData playerdatainstance;
-
-    //private void Awake()
-    //{
-    //    playerdatainstance = this;
-
-    //}
-
-
-    //public static PlayerData Instance
-    //{
-    //    get { return playerdatainstance; }
-    //}
-
        
     public static float plaHp=100;
     public float nowHp;
     public int nowCoin;
     public int nowGem;
     public float MaxplaHp = 120;
+    public static bool m_IsPause = false;
+
+
+
+ 
 
     //public  float PlaHp
     //{

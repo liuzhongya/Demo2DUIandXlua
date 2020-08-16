@@ -291,6 +291,9 @@
     <Compile Include="Assets\Scripts\UIShowData\GetCoinNum.cs" />
     <Compile Include="Assets\Scripts\UIShowData\GetGemNum.cs" />
     <Compile Include="Assets\Scripts\UIShowData\HpSlider.cs" />
+    <Compile Include="Assets\Scripts\WaterCon.cs" />
+    <Compile Include="Assets\Test1.cs" />
+    <Compile Include="Assets\Test2.cs" />
     <Compile Include="Assets\UIFramework\Base\BasePanel.cs" />
     <Compile Include="Assets\UIFramework\Extension\DictionaryExtension.cs" />
     <Compile Include="Assets\UIFramework\Manager\GameRoot.cs" />

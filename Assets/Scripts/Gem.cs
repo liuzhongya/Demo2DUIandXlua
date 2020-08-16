@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Gem : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private Animator ani;
+    private void Start()
+    {
+        ani = GetComponent<Animator>();
+    }
+    void Update () {
+        if (PlayerData.m_IsPause)
+        {
+            ani.speed = 0;
+        }
+        else
+        {
+            ani.speed = 1;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
 

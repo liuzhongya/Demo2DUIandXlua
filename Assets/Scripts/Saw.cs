@@ -7,7 +7,6 @@ public class Saw : MonoBehaviour {
     private bool IsWall = false;
     private Rigidbody2D enemyrig;
     private RaycastHit2D hitinfo;
-   
     private Vector2 enemyPos;
 
     public float SawMoveSpeed = 3.5f;
@@ -21,6 +20,7 @@ public class Saw : MonoBehaviour {
     public bool IsRo = false;
 
     public int random;
+
     private void OnEnable()
     {
         SawPos = GetComponent<Transform>();
@@ -33,10 +33,8 @@ public class Saw : MonoBehaviour {
 
 
     }
-    void Start () {
-    
-
-    }
+   
+  
     void FindTarget()
     {
         SawPos = GetComponent<Transform>();
@@ -45,8 +43,9 @@ public class Saw : MonoBehaviour {
     }
  
     void Update () {
+ 
+        SawMove();
 
-       SawMove();
     }
     void SawMove()
     {
@@ -61,16 +60,20 @@ public class Saw : MonoBehaviour {
         
         }
         //注意不能直接将脚本赋值到齿轮上，因为在旋转的时候要改变齿轮的rotation.z值
-        if(target!=null)
-        target.transform.Rotate(Vector3.forward, SawSelfSpeed * Time.deltaTime); //使得齿轮旋转 
+        if (target != null)
+        {    if(!PlayerData.m_IsPause)
+            target.transform.Rotate(Vector3.forward, SawSelfSpeed * Time.deltaTime); //使得齿轮旋转 
+
+        }
         else
         {
             FindTarget();
-            target.transform.Rotate(Vector3.forward, SawSelfSpeed * Time.deltaTime); //使得齿轮旋转 
+            if (!PlayerData.m_IsPause)
+                target.transform.Rotate(Vector3.forward, SawSelfSpeed * Time.deltaTime); //使得齿轮旋转 
         }
 
      //   int random = Random.Range(0, 4);
-        if (random == 1)
+        if (random == 1&& !PlayerData.m_IsPause)
         {
             if (target != null)
                 transform.Translate(Vector3.down * SawMoveSpeed * Time.deltaTime);// 使得齿轮父物体向上移动
@@ -80,7 +83,7 @@ public class Saw : MonoBehaviour {
                 transform.Translate(Vector3.down * SawMoveSpeed * Time.deltaTime);// 使得齿轮父物体向上移动
             }
         }
-        else if (random == 2)
+        else if (random == 2&& !PlayerData.m_IsPause)
         {
             if (target != null)
                 transform.Translate(Vector3.left * SawMoveSpeed * Time.deltaTime);// 使得齿轮父物体向左 移动
@@ -90,7 +93,7 @@ public class Saw : MonoBehaviour {
                 transform.Translate(Vector3.left * SawMoveSpeed * Time.deltaTime);// 使得齿轮父物体向左移动
             }
         }
-        else if(random==3)
+        else if(random==3&& !PlayerData.m_IsPause)
         {
             if (target != null)
                 transform.Translate(Vector3.right * SawMoveSpeed * Time.deltaTime);// 使得齿轮父物体向右移动
@@ -102,7 +105,7 @@ public class Saw : MonoBehaviour {
         }
         else
         {
-            if (target != null)
+            if (target != null&&!PlayerData.m_IsPause)
                 transform.Translate(Vector3.up * SawMoveSpeed * Time.deltaTime);// 使得齿轮父物体向上移动
 
         }
