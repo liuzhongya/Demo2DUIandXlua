@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 58310884961440156}
   - component: {fileID: 50267601186433840}
   m_Layer: 0
-  m_Name: Sawa (1)
+  m_Name: Sawa2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,7 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4344034282207630}
   m_Layer: 0
-  m_Name: Saws
+  m_Name: Saws2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -650,7 +650,7 @@ GameObject:
   - component: {fileID: 58388888254703418}
   - component: {fileID: 50668312143445220}
   m_Layer: 0
-  m_Name: Sawb (1)
+  m_Name: Sawb2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -997,7 +997,7 @@ GameObject:
   - component: {fileID: 58191150382878760}
   - component: {fileID: 50070865109542996}
   m_Layer: 0
-  m_Name: Sawa
+  m_Name: Sawa2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1015,7 +1015,7 @@ GameObject:
   - component: {fileID: 58729066801494122}
   - component: {fileID: 50824392310736640}
   m_Layer: 0
-  m_Name: Sawb
+  m_Name: Sawb2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

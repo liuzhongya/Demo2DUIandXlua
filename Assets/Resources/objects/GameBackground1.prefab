@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 58723243973292278}
   - component: {fileID: 50577712221735130}
   m_Layer: 0
-  m_Name: Sawa (1)
+  m_Name: Sawa1(1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 58718754510290618}
   - component: {fileID: 50993646839157426}
   m_Layer: 0
-  m_Name: Sawb (1)
+  m_Name: Sawb1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -341,7 +341,7 @@ GameObject:
   - component: {fileID: 58130436919053158}
   - component: {fileID: 50666871545034738}
   m_Layer: 0
-  m_Name: Sawb
+  m_Name: Sawb1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -423,12 +423,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4813673101788512}
   m_Layer: 0
-  m_Name: Saws
+  m_Name: Saws1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1382334389466852
 GameObject:
   m_ObjectHideFlags: 1
@@ -1006,7 +1006,7 @@ GameObject:
   - component: {fileID: 58558650613652472}
   - component: {fileID: 50318477967893812}
   m_Layer: 0
-  m_Name: Sawa
+  m_Name: Sawa1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

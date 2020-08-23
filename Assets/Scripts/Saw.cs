@@ -10,7 +10,7 @@ public class Saw : MonoBehaviour {
     private Vector2 enemyPos;
 
     public float SawMoveSpeed = 3.5f;
-    public float SawSelfSpeed = 180f;
+    public float SawSelfSpeed = 270f;
     public float MaxY = 4f;
     public float MinY = -4f;
     public Transform SawPos;
@@ -20,26 +20,29 @@ public class Saw : MonoBehaviour {
     public bool IsRo = false;
 
     public int random;
-
+    CircleCollider2D circollier;
     private void OnEnable()
     {
+
+      
+        circollier = gameObject.GetComponent<CircleCollider2D>();
         SawPos = GetComponent<Transform>();
-        sawroute = gameObject.name + "/Saw";
+         sawroute = gameObject.name + "/Saw";   
+          target = transform.Find("Saw").gameObject;
+            random = Random.Range(1, 5);
 
-        target = GameObject.Find(sawroute);
-        // print(sawroute);
-
-        random = Random.Range(1, 5);
-
-
+        target.SetActive(true);
+        circollier.enabled = true;
     }
-   
-  
+ 
+
+
     void FindTarget()
     {
         SawPos = GetComponent<Transform>();
         sawroute = gameObject.name + "/Saw";
-        target = GameObject.Find(sawroute);
+        target = transform.Find("Saw").gameObject;
+        // target = GameObject.Find(sawroute);
     }
  
     void Update () {
@@ -49,6 +52,7 @@ public class Saw : MonoBehaviour {
     }
     void SawMove()
     {
+      //  print("旋转开始");
         RaycastHit2D hit = Physics2D.Raycast(transform.position - new Vector3(0, 1f, 0), Vector2.down, 0.5f);
 
         if (hit.collider != null)
@@ -61,15 +65,24 @@ public class Saw : MonoBehaviour {
         }
         //注意不能直接将脚本赋值到齿轮上，因为在旋转的时候要改变齿轮的rotation.z值
         if (target != null)
-        {    if(!PlayerData.m_IsPause)
-            target.transform.Rotate(Vector3.forward, SawSelfSpeed * Time.deltaTime); //使得齿轮旋转 
+        {
+            if (!PlayerData.m_IsPause)
+            {
+                target.transform.Rotate(Vector3.forward, SawSelfSpeed * Time.deltaTime); //使得齿轮旋转 
+                
+             //   print("开始旋转1");
+            }
 
         }
         else
         {
             FindTarget();
             if (!PlayerData.m_IsPause)
+            {
                 target.transform.Rotate(Vector3.forward, SawSelfSpeed * Time.deltaTime); //使得齿轮旋转 
+               // print("开始旋转2");
+            }
+           
         }
 
      //   int random = Random.Range(0, 4);
@@ -130,7 +143,8 @@ public class Saw : MonoBehaviour {
 
     void UnSpawnItem()
     {
-        Destroy(gameObject);
+        target.SetActive(false);
+        circollier.enabled = false;
     }
 
 
